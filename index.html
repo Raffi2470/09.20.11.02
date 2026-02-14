@@ -146,18 +146,6 @@
         @keyframes fall { 
             to { transform: translateY(100vh) rotate(360deg); } 
         }
-        /* Audio control */
-        #audio-control { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background: #d2b0d0; 
-            color: white; 
-            border: none; 
-            padding: 10px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-        }
     </style>
 </head>
 <body>
@@ -165,8 +153,16 @@
         <h1>HAPPY VALENTINE DAYY SHAKYLAAAAA SAYANGGGGG</h1>
         <p>LOAFFYUUUUUUUUUUUUUUU<3</p>
     </header>
-
+    
+    <nav>
+        <a href="#bebeh">Bebeh</a>
+        <a href="#sayang">Sayang</a>
+        <a href="#pesan-cinta">Pesan Cinta</a>
+        <a href="#WILL-YU">Will You?</a>
+    </nav>
+    
     <section id="bebeh">
+        
         <img src="assets/foto1.gif" alt="Foto 1">
         <img src="assets/foto2.gif" alt="Foto 2">
         <img src="assets/foto3.gif" alt="Foto 3">
@@ -188,6 +184,7 @@
     </section>
 
     <section id="sayang">
+    
         <div class="collage">
             <img src="assets/bebeh.jpg" alt="Bebeh">
             <img src="assets/bebeh1.jpg" alt="Bebeh 1">
@@ -195,8 +192,9 @@
             <img src="assets/bebeh3.jpg" alt="Bebeh 3">
         </div>
         <img src="assets/bebeh5.jpg" alt="Bebeh 5">
+    </section>
 
-        <section id="pesan-cinta">
+    <section id="pesan-cinta">
         <h2>Pesan Cinta Khusus Untuk Kamuu</h2>
         <p class="message">Kamu adalah cahaya di hari gelapku...</p>
         <p class="message" style="animation-delay: 1s;">Setiap detik bersamamu adalah kebahagiaan...</p>
@@ -212,8 +210,42 @@
         <div id="confetti-container" class="confetti"></div>
     </section>
 
-   
-    
+    <script>
+        // Smooth scroll untuk nav
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fungsi untuk polling dengan confetti
+        function showResult() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'YEYYYY, ILOAFFFFFYUUU SO MUCHHH, KAMUU PENYEMANGATT AKUUU, MAKASIII UDAHHH NGESUPPORTT AKUU SAMPAIIIII DII TITIKK INIII, MAKASIIIIIII BANYAKKKKKKKKKK SAYANGGG 💖';
+            resultDiv.style.display = 'block';
+            // Tambahkan confetti
+            createConfetti();
+        }
+
+        // Fungsi confetti ditingkatkan
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ff0000', '#ff69b4', '#d2b0d0', '#ffb6c1', '#ff1493']; // Warna merah, pink, ungu
+            for (let i = 0; i < 100; i++) { // Lebih banyak partikel
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(piece);
+            }
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        }
     </script>
 </body>
 </html>
